@@ -9,7 +9,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/webhook", webhookHandler).Methods("POST")
+	r.HandleFunc("/postreceive", webhookHandler).Methods("POST")
 	r.HandleFunc("/", mainHandler).Methods("GET")
 
 	log.Print("Server started on localhost:8080")

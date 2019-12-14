@@ -1,14 +1,18 @@
 package main
 
 import (
+	"log"
 	"net/http"
-	"io"
 )
 
 func webhookHandler(w http.ResponseWriter, r *http.Request) {
+
+	event := r.Header.Get("x-github-event")
+
+	log.Print("Github Event: ")
+	log.Print(event)
+	
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-
-	io.WriteString(w, "{\"id\": \"123456\"}\n")
 }
 
